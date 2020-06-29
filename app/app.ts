@@ -14,9 +14,7 @@ async function startServer() {
     }
     Logger.info(`
       ################################################
-    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
              Server listening on port: ${config.port}
-    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     xxxxxxxxxxxxxxxx====  Moeid Saleem Khan ====xxxxxxxxxxxxxxxx
     xxxxxxxxxxxxxxxxxx---- www.moeidsaleem.com ------xxxxxxxxxxxxxxx
     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

@@ -1,5 +1,7 @@
 export interface IClient {
-    _id: string;
-    name: string;
+    _id: any;
+    title: string;
+    email: string;
+    phone: string;
   }
   
