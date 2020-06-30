@@ -13,12 +13,11 @@ async function startServer() {
       return;
     }
     Logger.info(`
-      ################################################
-             Server listening on port: ${config.port}
-    xxxxxxxxxxxxxxxx====  Moeid Saleem Khan ====xxxxxxxxxxxxxxxx
-    xxxxxxxxxxxxxxxxxx---- www.moeidsaleem.com ------xxxxxxxxxxxxxxx
-    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-      ################################################
+     -------------------------------------------------
+         Server listening on port: ${config.port}
+    xxxxxxxxxxxxxxxx Moeid Saleem Khan xxxxxxxxxxxxxxx
+    xxxxxxxxxxxx---- www.moeidsaleem.com ------xxxxxxx
+    --------------------------------------------------
     `);
   });
 }

@@ -45,7 +45,7 @@ export default class reportService {
     }
   }
 
-  public async deleteReport(reportId: ObjectId): Promise<{  success: boolean; }> {
+  public async deleteReport(reportId: any): Promise<{  success: boolean; }> {
     try {
       const reportRecord = this.reportModel.findOneAndRemove({ "_id": reportId });
      console.log('report-record', reportRecord)

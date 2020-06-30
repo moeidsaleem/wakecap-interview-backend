@@ -44,7 +44,7 @@ export default class locationService {
     }
   }
 
-  public async deleteLocation(locationId: ObjectId): Promise<{  success: boolean; }> {
+  public async deleteLocation(locationId: any): Promise<{  success: boolean; }> {
     try {
       const locationRecord = this.locationModel.findOneAndRemove({ "_id": locationId });
      console.log('location-record', locationRecord)

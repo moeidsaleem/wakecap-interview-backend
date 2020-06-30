@@ -42,7 +42,7 @@ export default class workerService {
     }
   }
 
-  public async deleteWorker(workerId: ObjectId): Promise<{  success: boolean; }> {
+  public async deleteWorker(workerId: any): Promise<{  success: boolean; }> {
     try {
       const workerRecord = this.workerModel.findOneAndRemove({ "_id": workerId });
      console.log('worker-record', workerRecord)

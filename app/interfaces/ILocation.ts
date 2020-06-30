@@ -6,3 +6,9 @@ export interface ILocation {
     worker_id: any;
   }
   
+  export interface ILocationInput{
+    coordinates: any;
+    is_active: boolean;
+    duration: number;
+    worker_id: any;
+  }

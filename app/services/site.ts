@@ -45,7 +45,7 @@ export default class siteService {
     }
   }
 
-  public async deleteSite(clientId: ObjectId): Promise<{  success: boolean; }> {
+  public async deleteSite(clientId: any): Promise<{  success: boolean; }> {
     try {
       const siteRecord = this.siteModel.findOneAndRemove({ "_id": clientId });
      console.log('site-record', siteRecord)

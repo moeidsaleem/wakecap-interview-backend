@@ -43,7 +43,7 @@ export default class clientService {
     }
   }
 
-  public async deleteClient(clientId: ObjectId): Promise<{  success: boolean; }> {
+  public async deleteClient(clientId: any): Promise<{  success: boolean; }> {
     try {
       const clientRecord = this.clientModel.findOneAndRemove({ "_id": clientId });
      console.log('client-record', clientRecord)

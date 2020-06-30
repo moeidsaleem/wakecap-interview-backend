@@ -5,3 +5,9 @@ export interface IClient {
     phone: string;
   }
   
+
+  export interface IClientInput{
+    title:string;
+    email:string;
+    phone:string;
+  }

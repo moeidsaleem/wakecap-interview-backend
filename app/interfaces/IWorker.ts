@@ -3,4 +3,7 @@ export interface IWorker {
     site_id: string;
     name: string;
   }
- 
+ export interface IWorkerInput{
+  site_id: string;
+  name: string;
+ }

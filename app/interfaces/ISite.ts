@@ -8,3 +8,12 @@ export interface ISite {
     
   }
   
+
+  export interface ISiteInput{
+    client: any;
+    timezone: string;
+    starting_hours: any;
+    ending_hours: any;
+    late_threshold: string;
+  }
+  
