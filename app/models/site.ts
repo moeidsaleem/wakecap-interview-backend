@@ -4,7 +4,7 @@ import mongoose, { Schema } from 'mongoose';
 const Site = new mongoose.Schema(
     {
           client:{
-              type: Schema.Types.ObjectId, 
+              type: Schema.Types.ObjectId,
               required:[true, 'Please provide Client'],
               ref: "Client"
           },

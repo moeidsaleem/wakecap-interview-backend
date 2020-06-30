@@ -1,135 +1,55 @@
-import Container, { Service, Inject } from 'typedi';
-import config from '../config';
+import { Service, Inject } from 'typedi';
 import { IClient } from '../interfaces/IClient';
-import mongoose from 'mongoose'
 
 @Service()
-export default class ShopService {
+export default class clientService {
 
   constructor(
-    @Inject('shopModel') private shopModel: Models.ShopModel,
-    @Inject('userModel') private userModel: Models.UserModel,
+    @Inject('clientModel') private clientModel: Models.clientModel,
     @Inject('logger') private logger,
   ) { }
-  public async getShops(userLoc?): Promise<{ shops: Array<IShop>; }> {
+  public async getClients(): Promise<{ clients: Array<IClient>; }> {
     try {
-
-      let coordinates =[userLoc.lat || -73.97, userLoc.long || 40.77];
-
-      const shopRecord = await this.shopModel.aggregate([
-        { "$geoNear": {
-            "near": {
-                "type": "Point",
-                "coordinates": coordinates
-            },
-            "distanceField": "distance",
-            "spherical": true,
-            "maxDistance": 10000
-        }}
-    ]);
-
-
-
-   
-      if (!shopRecord) {
-        throw new Error('No Shops found!');
+      const clientRecord = await this.clientModel.aggregate();
+      if (!clientRecord) {
+        throw new Error('No Client found!');
       }
-      this.logger.silly('Sending welcome email');
-      const shops = shopRecord;
-      return { shops };
+      this.logger.silly('Clients Found');
+      const clients = clientRecord;
+      return { clients };
     } catch (e) {
       this.logger.error(e);
       throw e;
     }
   }
 
-
-  public async addShop(shopInputDTO: IShopInput): Promise<{ shop: IShop; success: boolean }> {
+  public async addClient(clientData: any): Promise<{ client: IClient; success: boolean }> {
     try {
-   
-    
-      const shopRecord = await this.shopModel.create({
-        title: shopInputDTO.title,
-        photo: shopInputDTO.photo,
-        location:shopInputDTO.location,
-        likes:[]
+      const clientRecord = await this.clientModel.create({
+        title: clientData.title,
+        email: clientData.email,
+        phone:clientData.phone,
       })
-      if (!shopRecord) {
-        throw new Error('Shop cannot be created');
+      if (!clientRecord) {
+        throw new Error('client cannot be created');
       }
-      const shop = shopRecord;
+      const client = clientRecord;
       const success = true;
-      console.log('shop', shop)
-      return { shop, success };
+      console.log('client', client)
+      return { client, success };
     } catch (e) {
       this.logger.error(e);
       throw e;
     }
   }
 
-  public async deleteShop(shopId: ObjectId): Promise<{  success: boolean; }> {
+  public async deleteClient(clientId: ObjectId): Promise<{  success: boolean; }> {
     try {
-      
-      const shopRecord = this.shopModel.findOneAndRemove({ "_id": shopId });
-     console.log('shop----record---s', shopRecord)
+      const clientRecord = this.clientModel.findOneAndRemove({ "_id": clientId });
+     console.log('client-record', clientRecord)
       return { success: true}
-
     } catch (e) {
       console.log('error', e)
-
     }
   }
-
-  public async likeShop(userId,shopId: string): Promise<{  success: boolean; }> {
-    try {
-this.shopModel.findOneAndUpdate({_id: shopId}
-, {$push: {likes:  userId}}
-, function (err, doc) {
-    if (err) {
-        console.log("update document error");
-    } else {
-        console.log("update document success");
-        console.log('docs',doc);
-    }
-});
-      return { success: true}
-
-    } catch (e) {
-      console.log('error', e)
-
-    }
-  }
-
-  public async dislikeShop(userId,shopId: string): Promise<{  success: boolean; }> {
-    try {
-this.shopModel.findOneAndUpdate({_id: shopId}
-
-, {$pop: {likes:  userId}}
-
-, function (err, doc) {
-
-    if (err) {
-
-        console.log("update document error");
-
-    } else {
-
-        console.log("update document success");
-
-        console.log('docs',doc);
-
-    }
-
-});
-
-      return { success: true}
-
-    } catch (e) {
-      console.log('error', e)
-
-    }
-  }
- 
-
-
 }

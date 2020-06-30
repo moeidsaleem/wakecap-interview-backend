@@ -85,7 +85,7 @@ Report will be generated at 00:00:00 every night for a site.
 Create a cron job that will update location
 every 3 minutes.
 
-- Task: 
+- Task:
 
 ### TESTING
 
