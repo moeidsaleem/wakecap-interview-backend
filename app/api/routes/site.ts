@@ -11,7 +11,7 @@ export default (app: Router) => {
   const siteServiceInstance = Container.get(siteService);
 
   //get All
-  route.post('/' ,async (req: Request, res: Response) => {
+  route.get('/all' ,async (req: Request, res: Response) => {
     try{
         const {sites} = await siteServiceInstance.getSites();
         return res.json(sites).status(200);
@@ -31,9 +31,11 @@ export default (app: Router) => {
   route.post('/add', 
     celebrate({
         body:Joi.object({
-            title: Joi.string().required(),
-            photo: Joi.string().required(),
-            site:Joi.object()
+            client: Joi.string().required(),
+            timezone: Joi.string().required(),
+            starting_hours: Joi.string().required(),
+            ending_hours: Joi.string().required(),
+            late_threshold: Joi.string().required(),
         })
     }), async(req:Request, res:Response, next: NextFunction)=>{
     // const logger = Container.get('logger');

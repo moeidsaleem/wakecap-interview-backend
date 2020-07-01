@@ -11,7 +11,7 @@ export default (app: Router) => {
   const workerServiceInstance = Container.get(workerService);
 
   //get All
-  route.post('/' ,async (req: Request, res: Response) => {
+  route.get('/all' ,async (req: Request, res: Response) => {
     try{
         const {workers} = await workerServiceInstance.getWorkers();
         return res.json(workers).status(200);
@@ -31,9 +31,8 @@ export default (app: Router) => {
   route.post('/add', 
     celebrate({
         body:Joi.object({
-            title: Joi.string().required(),
-            photo: Joi.string().required(),
-            worker:Joi.object()
+            site_id: Joi.string().required(),
+            name: Joi.string().required(),
         })
     }), async(req:Request, res:Response, next: NextFunction)=>{
     // const logger = Container.get('logger');

@@ -40,7 +40,7 @@ export default async ({ expressApp }) => {
     ]
   });
 
-  await jobsLoader({ agenda });
+  await jobsLoader({ agenda })
   Logger.info('✌️ Jobs loaded');
 
     await expressLoader({ app: expressApp });

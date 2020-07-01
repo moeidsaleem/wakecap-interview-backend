@@ -11,7 +11,7 @@ export default (app: Router) => {
   const locationServiceInstance = Container.get(locationService);
 
   //get All
-  route.post('/' ,async (req: Request, res: Response) => {
+  route.get('/all' ,async (req: Request, res: Response) => {
     try{
         const {locations} = await locationServiceInstance.getLocations();
         return res.json(locations).status(200);
@@ -31,9 +31,10 @@ export default (app: Router) => {
   route.post('/add', 
     celebrate({
         body:Joi.object({
-            title: Joi.string().required(),
-            photo: Joi.string().required(),
-            location:Joi.object()
+            worker_id: Joi.string().required(),
+            coordinates: Joi.object().required(),
+            is_active: Joi.boolean().required(),
+            duration: Joi.number().required()
         })
     }), async(req:Request, res:Response, next: NextFunction)=>{
     // const logger = Container.get('logger');

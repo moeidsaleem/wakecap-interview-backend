@@ -23,6 +23,6 @@ const Location = new mongoose.Schema(
 },{
     timestamps: true
 })
-Location.index({ "coordinates": "2dsphere" });
+Location.index({ "coordinates": "Point" });
 
 export default mongoose.model<ILocation & mongoose.Document>('Location', Location)

@@ -12,7 +12,7 @@ export default (app: Router) => {
   const Logger = Container.get('logger');
 
   //get All
-  route.post('/all' ,async (req: Request, res: Response) => {
+  route.get('/all' ,async (req: Request, res: Response) => {
     try{
         const {clients} = await clientServiceInstance.getClients();
         return res.json(clients).status(200);
