@@ -10,7 +10,7 @@ export default class siteService {
   ) { }
   public async getSites(): Promise<{ sites: Array<ISite>; }> {
     try {
-      const siteRecord = await this.siteModel.aggregate();
+      const siteRecord = await this.siteModel.find();
       if (!siteRecord) {
         throw new Error('No Site found!');
       }

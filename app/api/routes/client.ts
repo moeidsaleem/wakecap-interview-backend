@@ -9,14 +9,16 @@ const route = Router();
 export default (app: Router) => {
   app.use('/clients', route);
   const clientServiceInstance = Container.get(clientService);
+  const Logger = Container.get('logger');
 
   //get All
-  route.post('/' ,async (req: Request, res: Response) => {
+  route.post('/all' ,async (req: Request, res: Response) => {
     try{
         const {clients} = await clientServiceInstance.getClients();
         return res.json(clients).status(200);
 
     }catch(e){
+        Logger.error(e)
 
     }
   });
@@ -32,13 +34,14 @@ export default (app: Router) => {
     celebrate({
         body:Joi.object({
             title: Joi.string().required(),
-            photo: Joi.string().required(),
-            location:Joi.object()
+            email: Joi.string().required(),
+            phone:Joi.string().required()
         })
     }), async(req:Request, res:Response, next: NextFunction)=>{
     // const logger = Container.get('logger');
+    Logger.info('Client Add triggered');
     console.log(req.body);
-        // logger.debug('req', req.body);
+        Logger.debug('req', req.body);
         try{
             const { client, success } = await clientServiceInstance.addClient(req.body as IClientInput);
             return res.status(201).json({client, success})

@@ -1,6 +1,6 @@
 import { Container } from 'typedi';
 import locationService from '../services/location' 
-import agenda from '../lib/agenda';
+// import agenda from '../lib/agenda';
 
 
 export default class addLocationJob {
@@ -8,11 +8,10 @@ export default class addLocationJob {
     const Logger = Container.get('logger');
     try {
       Logger.debug('✌️ Add Location Job triggered!');
-      const { email, name }: { [key: string]: string } = job.attrs.data;
-
+      // const { email, name }: { [key: string]: string } = job.attrs.data;
       // This will be the job that will add location every 3 minutes. 
-      Container.get('AgendaInstance');
-      const locationServiceInstance = Container.get(locationService);
+      // const agenda = Container.get('AgendaInstance');
+      // const locationServiceInstance = Container.get(locationService);
     //   const mailerServiceInstance = Container.get(MailerService);
       done();
     } catch (e) {

@@ -10,7 +10,7 @@ export default class locationService {
   ) { }
   public async getLocations(): Promise<{ locations: Array<ILocation>; }> {
     try {
-      const locationRecord = await this.locationModel.aggregate();
+      const locationRecord = await this.locationModel.find();
       if (!locationRecord) {
         throw new Error('No Location found!');
       }

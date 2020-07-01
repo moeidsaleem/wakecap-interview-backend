@@ -10,7 +10,7 @@ export default class reportService {
   ) { }
   public async getReports(): Promise<{ reports: Array<IReport>; }> {
     try {
-      const reportRecord = await this.reportModel.aggregate();
+      const reportRecord = await this.reportModel.find();
       if (!reportRecord) {
         throw new Error('No Report found!');
       }

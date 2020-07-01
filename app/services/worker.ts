@@ -10,7 +10,7 @@ export default class workerService {
   ) { }
   public async getWorkers(): Promise<{ workers: Array<IWorker>; }> {
     try {
-      const workerRecord = await this.workerModel.aggregate();
+      const workerRecord = await this.workerModel.find();
       if (!workerRecord) {
         throw new Error('No Worker found!');
       }

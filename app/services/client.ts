@@ -10,12 +10,15 @@ export default class clientService {
   ) { }
   public async getClients(): Promise<{ clients: Array<IClient>; }> {
     try {
-      const clientRecord = await this.clientModel.aggregate();
+      console.log('challa bccc')
+      const clientRecord = await this.clientModel.find();
+      console.log('c', clientRecord);
       if (!clientRecord) {
         throw new Error('No Client found!');
       }
       this.logger.silly('Clients Found');
       const clients = clientRecord;
+      console.log('clients', clients);
       return { clients };
     } catch (e) {
       this.logger.error(e);
