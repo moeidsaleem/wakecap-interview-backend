@@ -66,7 +66,6 @@ Details are as follow
 - inactive_hours
 
 ##### Relationships
-
 Based on my assumption, the relationship b/w all models are as followed;
 
 Client ----> Sites ----> Workers

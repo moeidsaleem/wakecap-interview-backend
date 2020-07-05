@@ -1,6 +1,6 @@
 import expressLoader from './express';
 import mongooseLoader from './mongoose';
-import jobsLoader from './jobs';
+import {AddLocationJob,GenerateReportJob} from './jobs';
 import Logger from './logger';
 import injector from './injector'
 
@@ -40,8 +40,12 @@ export default async ({ expressApp }) => {
     ]
   });
 
-  await jobsLoader({ agenda })
-  Logger.info('✌️ Jobs loaded');
+  // await AddLocationJob({ agenda })
+  // Logger.info('✌️ Add Location Job loaded');
+
+  await GenerateReportJob({ agenda })
+  Logger.info('✌️ Generate Report Job loaded');
+
 
     await expressLoader({ app: expressApp });
     Logger.info('Express ready to go!!');

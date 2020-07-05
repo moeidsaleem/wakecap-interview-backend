@@ -7,7 +7,8 @@ export default class addLocationJob {
     const Logger = Container.get('logger');
     try {
       Logger.debug('✌️ Add Location Job triggered!');
-      // This will be the job that will add location every 3 minutes. 
+      Logger.debug(new Date().toTimeString())
+      // This will be the job that will add location every 3 minutes. Faking the location every 3 minutes.
       // const agenda = Container.get('AgendaInstance');
       const locationServiceInstance = Container.get(locationService);
       locationServiceInstance.addLocation( {
